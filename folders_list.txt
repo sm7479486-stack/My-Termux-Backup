@@ -1,0 +1,13 @@
+OneShot-Wifi
+Termux-Ai
+folders_list.txt
+install-nethunter-termux
+kali-nethunter-rootfs-full-arm64.tar.xz
+kali-nethunter-rootfs-full-arm64.tar.xz.st
+main.py
+my_tools.txt
+phones.txt
+pins.txt
+wifi-root
+wifite2
+wipwn-hackwifi
