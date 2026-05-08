@@ -13,19 +13,23 @@ def restore_my_termux():
                     print(f"جاري تثبيت: {tool_name}...")
                     os.system(f"pkg install {tool_name} -y")
     else:
-        print("خطأ: لم يتم العثور على ملف my_tools.txt")
+        print("⚠️ تنبيه: ملف my_tools.txt غير موجود")
 
-    # 2. التأكد من وجود المجلدات من ملف folders_list.txt
-    print("\n--- فحص المجلدات والمشاريع ---")
+    # 2. فحص العناصر (مجلدات أو ملفات)
+    print("\n--- فحص المجلدات والملفات الاحتياطية ---")
     if os.path.exists("folders_list.txt"):
         with open("folders_list.txt", "r") as file:
-            folders = file.readlines()
-            for folder in folders:
-                folder_name = folder.strip()
-                if os.path.isdir(folder_name):
-                    print(f"✅ المجلد موجود: {folder_name}")
+            items = file.readlines()
+            for item in items:
+                name = item.strip()
+                if not name: continue
+                
+                if os.path.isdir(name):
+                    print(f"✅ مجلد موجود: {name}")
+                elif os.path.isfile(name):
+                    print(f"🥸 ملف موجود (ليس مجلد): {name}")
                 else:
-                    print(f"❌ المجلد مفقود: {folder_name} (قد تحتاج لتحميله مرة أخرى)")
+                    print(f"❌ عنصر مفقود تماماً: {name}")
     
     print("\n--- تمت العملية بنجاح! ---")
 
