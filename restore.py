@@ -15,7 +15,7 @@ def restore_my_termux():
     else:
         print("⚠️ تنبيه: ملف my_tools.txt غير موجود")
 
-    # 2. فحص العناصر (مجلدات أو ملفات)
+    # 2. فحص العناصر بالمنطق الذي طلبته
     print("\n--- فحص المجلدات والملفات الاحتياطية ---")
     if os.path.exists("folders_list.txt"):
         with open("folders_list.txt", "r") as file:
@@ -24,12 +24,15 @@ def restore_my_termux():
                 name = item.strip()
                 if not name: continue
                 
+                # إذا كان مجلداً (وعادة المجلد يحتوي ملفات)
                 if os.path.isdir(name):
                     print(f"✅ مجلد موجود: {name}")
+                # إذا كان ملفاً وليس مجلدًا
                 elif os.path.isfile(name):
-                    print(f"🥸 ملف موجود (ليس مجلد): {name}")
+                    print(f"🥸 ملف موجود: {name}")
+                # إذا لم يجد شيئاً
                 else:
-                    print(f"❌ عنصر مفقود تماماً: {name}")
+                    print(f"❌ مفقود: {name}")
     
     print("\n--- تمت العملية بنجاح! ---")
 
